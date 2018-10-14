@@ -3,6 +3,7 @@
 #include "omp.h"
 #include "matrix.h"
 #include <ctime>
+//#include "Office.h"
 
 using std::cin;
 using std::cout;
@@ -23,14 +24,14 @@ int main(int argc, char* argv) {
 
 	int n1, n2, n3;
 	int blockSize;
-	int numberOfThreads = 4;
+	int numberOfThreads = 8;
 
 	//cin >> n1 >> n2 >> n3;
 	//cin >> blockSize;
-	n1 = 500;
-	n2 = 500;
-	n3 = 750;
-	blockSize = 8;
+	n1 = 5;
+	n2 = 10;
+	n3 = 5;
+	blockSize = 5;
 	
 
 	Matrix m1(n1, n2);
@@ -44,14 +45,15 @@ int main(int argc, char* argv) {
 
 	long start = clock();
 
-	Matrix m3 = simpleMultiplication(m1, m2);
-	//Matrix m3 = blockMultiplication(m1, m2, blockSize);
+	//Matrix m3 = simpleMultiplication(m1, m2);
+	Matrix m3 = blockMultiplication(m1, m2, blockSize);
 
 	long finish = clock();
 	double difference = (finish - start)/1000.0;
 
 	ofstream fin("output.txt", ofstream::out | ofstream::app);
-	fin << n1 << ":" << n2 << ":" << n3 << ":" << blockSize << ":" << numberOfThreads << ":" << difference << "\n";
+	fin << "Размеры матрицы: " << n1 << "x" << n2 << "x" << n3 << "\nРазмеры блока: " << blockSize << "\nКоличество потоков: " << numberOfThreads << "\nВремя выполнения (с): " << difference << "\n----------------------\n";
+	//fin << n1 << ":" << n2 << ":" << n3 << ":" << blockSize << ":" << numberOfThreads << ":" << difference << "\n";
 	fin.close();
 	
 	//cout << m3 << endl;

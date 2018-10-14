@@ -27,4 +27,7 @@
       <Filter>Файлы исходного кода</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="output.txt" />
+  </ItemGroup>
 </Project>

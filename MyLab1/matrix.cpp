@@ -23,17 +23,17 @@ int Matrix::getColumnsNumber() {
 }
 
 int Matrix::get(int i, int j) {
-	return matrix[i*rows + j];
+	return matrix[i*columns + j];
 }
 
 void Matrix::set(int i, int j, int value) {
-	matrix[i*rows + j] = value;
+	matrix[i*columns+ j] = value;
 }
 
 void Matrix::initRandom() {
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < columns; j++) {
-			matrix[rows*i + j] = rand() % 200 - 100;
+			matrix[columns*i + j] = rand() % 200 - 100;
 		}
 	}
 
@@ -58,7 +58,7 @@ ostream& operator<<(ostream& out, const Matrix& matr)
 
 	for (int i = 0; i < matr.rows; i++) {
 		for (int j = 0; j < matr.columns; j++) {
-			out << matr.matrix[i*matr.rows + j] << ends;
+			out << matr.matrix[i*matr.columns+ j] << ends;
 		}
 		cout << endl;
 	}
